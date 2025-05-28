@@ -92,8 +92,8 @@ function loginRequest() {
     .then(data => {
       console.log('✅ Login bem-sucedido:', data);
       Atividade('SALA-DO-FUTURO','Logado com sucesso!');
-      Atividade('Cebolitos','Atenção: o script não faz redações e atividades em rascunho!');
-      Atividade('Cebolitos', 'O script vem como padrão o tempo de 90 Segundos para fazer as atividades!');
+      Atividade('Panda do Rio','Atenção: o script não faz redações e atividades em rascunho!');
+      Atividade('Panda do Rio', 'O script vem como padrão o tempo de 90 Segundos para fazer as atividades!');
       sendRequest(data.token);
     })
     .catch(error => {
@@ -483,7 +483,7 @@ function removeTags(htmlString) {
 }
 function log(str) {
 console.log("===================================");
-console.log(`★ ✦ CEBOLITOS ${str} ✦ ★`);
+console.log(`★ ✦ Panda do Rio ${str} ✦ ★`);
 console.log("===================================");
 
 }

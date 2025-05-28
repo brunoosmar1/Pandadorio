@@ -483,7 +483,7 @@ function removeTags(htmlString) {
 }
 function log(str) {
 console.log("===================================");
-console.log(`★ ✦ CEBOLITOS ${str} ✦ ★`);
+console.log(`★ ✦ Panda do Rio ${str} ✦ ★`);
 console.log("===================================");
 
 }
