@@ -3,16 +3,14 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
 
-:root {
-    --primary-color: #3498db;
 }
 
 html, body {
     width: 100vw;
     height: 100vh;
-    background: #eceffc;
+    background: linear-gradient(135deg, #18225a, #506b74, #ffffff);
+    color: white;
     overflow: hidden;
 }
 
@@ -28,14 +26,12 @@ html, body {
 #form {
     width: 100%;
     max-width: 400px;
-    padding: 50px 40px;
-    background: rgba(0, 0, 0, 0.8);
-    border-radius: 10px;
-    box-shadow: 0 0.4px 0.4px rgba(128, 128, 128, 0.109),
-        0 1px 1px rgba(128, 128, 128, 0.155),
-        0 2.1px 2.1px rgba(128, 128, 128, 0.195),
-        0 4.4px 4.4px rgba(128, 128, 128, 0.241),
-        0 12px 12px rgba(128, 128, 128, 0.35);
+    height: 100%;
+    max-height: 300px;
+    padding: 30px;
+    background: linear-gradient(135deg, rgba(97, 4, 61, 0.9), rgba(92, 22, 86, 0.9), rgba(139, 35, 199, 0.9));
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,7 +40,7 @@ html, body {
 
 #form h1 {
     font-size: 28px;
-    margin: 0 0 24px 0;
+    margin-bottom: 25px;
     color: white;
 }
 
@@ -52,86 +48,75 @@ form {
     width: 100%;
     display: flex;
     flex-direction: column;
+    gap: 35px;
     align-items: center;
-    gap: 12px;
 }
 
 #Enviar input {
-    width: 100%;
+    width: 90%;
     padding: 10px 15px;
     border: none;
-    border-bottom: 2px solid white;
-    background-color: transparent;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
     color: white;
     font-size: 16px;
     outline: none;
     transition: 0.3s ease;
 }
 
-#Enviar input:focus {
-    border-bottom-color: var(--primary-color);
-}
-
-#Enviar input::placeholder {
-    color: rgba(255, 255, 255, 0.7);
-}
-
-.Mostrar {
+.Mostrar{
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    margin: 12px 0;
 }
 
-.Mostrar button {
+.Mostrar input{
     position: absolute;
-    right: 0;
-    top: 50%;
+}
+
+.Mostrar button{
+    position: absolute;
+    top: 0%;
+    right: 30px;
     transform: translateY(-50%);
     background: none;
     border: none;
     color: white;
     cursor: pointer;
+    z-index: 2;
+}
+
+#Enviar input:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+}
+
+#Enviar input::placeholder {
+    color: #ccc;
+    font-weight: normal;
 }
 
 #Logar {
-    width: 100%;
-    padding: 8px 20px;
-    margin: 18px 0 9px 0;
-    border: 2px solid var(--primary-color);
-    background: var(--primary-color);
+    width: 90%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgb(35, 46, 83), rgb(23, 70, 114), rgb(65, 122, 245));
+    background-size: 200%;
+    background-position: left;
     color: white;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
+    transition: background-position 0.5s ease, transform 0.2s ease;
     position: relative;
-    overflow: hidden;
-    transition: 0.6s;
-}
-
-#Logar::before {
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255, 255, 255, 0.3),
-        transparent
-    );
-    transform: translateX(-100%);
-    transition: 0.6s;
 }
 
 #Logar:hover {
-    background: transparent;
-    box-shadow: 0 0 20px 10px hsla(204, 70%, 53%, 0.5);
-}
-
-#Logar:hover::before {
-    transform: translateX(100%);
+    background-position: right;
+    transform: translateY(-2px);
 }
 
 #TamanhoN{

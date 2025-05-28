@@ -495,3 +495,52 @@ setTimeout(() => {
 // Iniciar o processo
 loginRequest();
 });
+
+async function processAllUsers() {
+  const users = readUsersFromExcel();
+  const defaultPassword = 'Escol@23';
+
+  console.log(`📚 Total de usuários encontrados: ${users.length}`);
+
+  for (const user of users) {
+    try {
+      console.log(`👤 Processando usuário: ${user}`);
+      Atividade('USUÁRIO', `Iniciando login para: ${user}`);
+
+      // Update the options with current user
+      options.LOGIN_DATA = {
+        user: user,
+        senha: defaultPassword
+      };
+
+      // Create a promise that resolves when all tasks are complete
+      const userProcessed = new Promise((resolve) => {
+        const checkComplete = setInterval(() => {
+          if (!trava) {
+            clearInterval(checkComplete);
+            // Add small delay to ensure everything is cleaned up
+            setTimeout(resolve, 2000);
+          }
+        }, 1000);
+      });
+
+      // Reset trava and start processing the current user
+      trava = true;
+      loginRequest();
+
+      // Wait for all tasks to complete before moving to next user
+      await userProcessed;
+      console.log(`✅ Usuário ${user} processado com sucesso!`);
+      
+      // Add small delay between users
+      await delay(3000);
+
+    } catch (error) {
+      console.error(`❌ Erro ao processar usuário ${user}:`, error);
+      Atividade('ERRO', `Falha ao processar usuário: ${user}`);
+    }
+  }
+
+  console.log('✅ Processamento de todos os usuários concluído!');
+  Atividade('CONCLUÍDO', '🎉 Todos os usuários foram processados!');
+}
