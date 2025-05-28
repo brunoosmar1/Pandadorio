@@ -53,7 +53,7 @@ document.getElementById('Enviar').addEventListener('submit', (e) => {
     trava = true;
 
     const options = {
-      TEMPO: 90, //Tempo atividade em SEGUNDOS
+      TEMPO: 150, //Tempo atividade em SEGUNDOS
       ENABLE_SUBMISSION: true,
       LOGIN_URL: 'https://sedintegracoes.educacao.sp.gov.br/credenciais/api/LoginCompletoToken',
       LOGIN_DATA: {
@@ -93,11 +93,11 @@ function loginRequest() {
       console.log('✅ Login bem-sucedido:', data);
       Atividade('SALA-DO-FUTURO','Logado com sucesso!');
       Atividade('Cebolitos','Atenção: o script não faz redações e atividades em rascunho!');
-      Atividade('Cebolitos', 'O script vem como padrão o tempo de 90 Segundos para fazer as atividades!');
+      Atividade('Cebolitos', 'O script vem como padrão o tempo de 150 Segundos para fazer as atividades!');
       sendRequest(data.token);
     })
     .catch(error => {
-      Atividade('SALA-DO-FUTURO','PORRA! nao foi possivel logar!')
+      Atividade('SALA-DO-FUTURO','Não foi possivel logar!')
       setTimeout(() => {
         trava = false;
       }, 2000);
@@ -130,16 +130,16 @@ function fetchUserRooms(token) {
 
   makeRequest(url, 'GET', headers)
     .then(data => {
-      console.log('✅ Salas do usuário:', data);
+      console.log('✅ Tarefas do usuário:', data);
       if (data.rooms && data.rooms.length > 0) {
         const roomName = data.rooms[0].name;
         fetchTasks(token, roomName);
       } else {
-        console.warn('⚠️ Nenhuma sala encontrada..');
+        console.warn('⚠️ Nenhuma tarefa encontrada..');
       }
     })
     .catch(error => {
-      console.error('❌ Erro na requisição de salas:', error)
+      console.error('❌ Erro na requisição de tarefas:', error)
       trava = false;
     });
 }
